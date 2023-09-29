@@ -16,6 +16,7 @@ const mostrarPublicaciones = (publicaciones, elementoHtml) => {
                 <h5>${publicacion.titulo}</h5>
                 <p>${publicacion.descripcion}</p>
                 <p>${publicacion.fecha}</p>
+                <p>${publicacion.firma_autor}</p>
             </div>
             </section>
         `

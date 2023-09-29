@@ -18,8 +18,15 @@ ctrl.crearPublicacion = async (req, res) => {
 }
 
 ctrl.obtenerPublicaciones = async (req, res) => {
-    const publicaciones = await Publicaciones.findAll();
-    res.json(publicaciones)
+    try {
+        const publicaciones = await Publicaciones.findAll();
+        return res.json(publicaciones)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            msg: "Error al obtener las publicaciones"
+        })
+    }
 }
 
 ctrl.actualizarPublicacion = async (req, res) => {
@@ -51,9 +58,16 @@ ctrl.eliminarPublicacion = async (req, res) => {
 }
 
 ctrl.obtenerPublicacion = async (req, res) => {
-    const publicacion = await Publicaciones.findByPk(req.params.id)
-    return publicacion;
-}
+    try {
+     const publicacion = await Publicaciones.findByPk(req.params.id)
+     return res.json(publicacion)
+    } catch (error) {
+     console.log(error)
+     return res.status(500).json({
+         msg: "Error al obtener la publicación"
+     })
+    }
+ }
 
 
 
